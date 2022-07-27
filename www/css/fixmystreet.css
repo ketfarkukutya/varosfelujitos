@@ -1,0 +1,98 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+    background: #2B443C url('../img/seamless-arrow-vector-pattern-hand-drawn-background.png') repeat;
+}
+
+.footerdiv {
+	position: fixed; 
+	bottom: 0px; 
+	left: 0px; 
+	width: 100%; 
+	text-align: center;
+	background: #282B2A;
+	color: #B6C4BF;
+	font-size: 14px;
+	padding: 3px;
+	z-index: 1000;
+}
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+	padding: 10px;
+	margin-bottom: 30px;
+	background: #EFF9F5;
+	border-radius: 7px;
+	border-color: #282B2A;
+	border-width: 1px;
+	border-style: solid;
+	box-shadow: 3px 3px 2px #282B2A;
+}
+
+.titlecontainer {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.titlecontainer ul {
+	margin-top: 0px; margin-bottom: 0px;
+	padding: 10px;
+	padding-top: 5px; padding-bottom: 5px;
+	background: #282B2A;
+	color: #B6C4BF;
+	border-radius: 7px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #282B2A;
+}
+
+.titlecontainer li {
+    float: left;
+}
+
+.titlecontainer li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.titlecontainer li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.titlecontainer .active {
+    background-color: #904F3E;
+}
+
+.titlecontainer .active:hover {
+    background-color: #44302B;
+}
+
+.container .active {
+	margin: 0 auto;
+    background-color: #904F3E;
+	width: 400px; 
+	padding: 20px;
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
+	display: block;
+}
+
+.container .active:hover {
+    background-color: #44302B;
+}

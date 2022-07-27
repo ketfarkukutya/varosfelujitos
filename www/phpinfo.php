@@ -1,0 +1,5 @@
+<?php 
+//imagecreatefromjpeg();
+phpinfo();
+
+?>

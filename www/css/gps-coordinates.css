@@ -1,0 +1,295 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background: url('../img/container-background.png') repeat;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#wrap > .container {
+  padding: 100px 15px 0;
+  background: url('../img/container-background.png') repeat;
+}
+.container .credit {
+  margin: 20px 0;
+  background: url('../img/container-background.png') repeat;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+  background: url('../img/container-background.png') repeat;
+}
+
+code {
+  font-size: 80%;
+}
+
+section {
+  padding-top: 95px;
+  margin-top: -95px;
+}
+
+body, input {
+    font-family:"Noto Sans",sans-serif;
+    font-weight:300;
+}
+
+strong, label, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    /* font-family:"Noto Sans",sans-serif; */
+	font-family: 'Noto Sans', sans-serif;
+    font-weight:500;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+h2, h3, .h2, .h3 {
+    font-size:24px;
+}
+
+h4 #link {
+    font-weight:300;
+}
+
+#footer {
+    background-color:#fff;
+    border-top:1px solid #e7e7e7;
+}
+
+#wrap {
+    margin:0 auto -61px;
+    padding:0 0 61px;
+}
+
+.row {
+    margin-bottom:15px;
+}
+
+#top_account {
+    padding-top:11px;
+	 margin-left:10px;
+	 margin-right:10px;
+}
+
+#plus-one {
+    margin-left: 10px;
+    margin-right: 5px;
+    padding-top: 11px;
+}
+
+.twitter {
+    padding-top:13px;
+}
+
+.container > .navbar-header, .container > .navbar-collapse {
+    margin-left:-15px;
+    margin-right:-15px;
+}
+
+.navbar-collapse {
+    max-height:400px;
+}
+
+.navbar-default {
+    background-color:#fff;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color:#eee;
+}
+
+.nav-tabs {
+    border-bottom: 0 none;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  border-color:#e7e7e7;
+  border-bottom-color: transparent;
+}
+
+.page-header {
+    margin:10px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sexagesimal, .sexagesimalsec {
+    display:inline-block;
+    padding:6px;
+}
+
+.sexagesimal {
+    width: 40px;
+}
+
+.sexagesimalsec {
+    width: 70px;
+}
+
+.form-horizontal .control-label {
+    text-align:left;
+}
+
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+    margin-right:10px;
+    margin-left:5px;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"],
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    margin-left:-18px;
+}
+
+.radio-inline, .checkbox-inline {
+    padding-left:18px;
+    padding-top:0;
+    width:28px;
+}
+
+.form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
+    padding-top:0;
+}
+
+.form-horizontal {
+    padding-bottom: 0px;
+}
+
+.col-md-3.control-label {
+    margin-bottom: 2px;
+}
+
+#map_canvas {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width:100%;
+    height:500px;
+    position:relative;
+    background:rgb(229, 227, 223);
+    overflow:hidden;
+}
+
+.favorite, .bookmarked {
+    margin-left: 15px;
+}
+
+.table > thead > tr > th {
+    border-bottom: 1px solid #e7e7e7;
+    vertical-align: bottom;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 1px solid #e7e7e7;
+    vertical-align: middle;
+}
+
+hr {
+  border-top: 1px solid #e7e7e7;
+}
+
+.zeroclipboard-is-hover {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.adslot_responsive { display:inline-block;width:728px;height:15px }
+
+.adlink_right {margin-top: 20px;}
+
+.admargintop  {margin-top: 10px;}
+
+.input-group-addon {
+    background-color:#4285f4;
+    border-color:#4285f4;
+    color:#fff;
+}
+
+ul.countries li a {
+  padding:5px 0;
+  display:inline-block;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .col-md-9 {
+    width: 100%;
+  }
+  .col-md-offset-3.col-md-4 {
+    width: 100%;
+  }
+  .col-md-offset-3 {
+    margin-left:0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .col-md-3.control-label {
+    padding-top:0;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+    .nav > li > a {
+      position: relative;
+      display: block;
+      padding: 10px 6px;
+    }
+}
+
+@media (max-width: 767px) {
+  #wrap {
+    word-wrap:break-word;
+  }
+  #copy-button {
+    display: none;
+  }
+  .nav-tabs > li {
+    float:none;
+    margin-bottom:0;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border:0 none;
+  }
+  .nav-tabs > li > a {
+    border:0 none;
+    border-radius:0;
+    margin-right:0;
+  }
+  .navbar-header {
+    width:100%;
+  }
+  .navbar-toggle {
+    margin-top:6px;
+  }
+  ul.countries li a {
+    padding:10px 0;
+  }
+}
+
+@media (max-width: 500px) {
+    .adslot_responsive { display: none; }
+    .small_width_no_display { display: none; }
+}
