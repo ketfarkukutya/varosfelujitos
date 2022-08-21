@@ -106,7 +106,7 @@ $pagenumber_prew = $baselink . "?u=list&n=" . ($pagenumber_curr-1);
 <script>
 	function openissue (issue)
 		{
-			location.replace("<? print("$baselocation");?>?u=issue&i=" + issue);
+			window.open("<? print("$baselocation");?>?u=issue&i="+issue);
 		}
 </script>
 <div class="container" id="list" style="margin-top: 5px; display: none;">
