@@ -37,7 +37,7 @@ $pagenumber_curr = 0;
 $pagenumber_max = 0;
 $pagenumber_max_item = 0;
 
-$q_pagemax = "SELECT COUNT(Id) AS \"n\" FROM `Issue`;";
+$q_pagemax = "SELECT COUNT(Id) AS \"n\" FROM `Issue` WHERE $searchstring ORDER BY Created DESC;";
 $result_pagemax = mysqli_query($conn, $q_pagemax);
 while ( $r = mysqli_fetch_assoc($result_pagemax)) {
 	$pagenumber_max_item = $r["n"];
