@@ -278,6 +278,15 @@ if ($pagetype == 5)
 		}
 		?>
 	</div>
+	<div class="row" style="margin-left: 10px;">
+		<input type="button" class="btn btn-warning" value="Előző oldal" onclick="<? echo "window.location.replace('$pagenumber_prew')"; ?>" />
+		<?
+			print($pagenumber_curr+1);
+			print(" / ");
+			print($pagenumber_max);
+		?>
+		<input type="button" class="btn btn-warning" value="Következő oldal" onclick="<? echo "window.location.replace('$pagenumber_next')"; ?>" />
+	</div>
 <?
 }
 ?>
