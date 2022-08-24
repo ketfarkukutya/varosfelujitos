@@ -19,6 +19,10 @@ if (isset($_POST['search']))
 		$searchstring .= "AND Type = '$searchfiltertype' ";
 	if (strlen($searchfilterstatus) <> 0)
 		$searchstring .= "AND Status = '$searchfilterstatus' ";
+	$_SESSION['search'] = $_POST['search'];
+	$_SESSION['problemtitle'] = $_POST['problemtitle'];
+	$_SESSION['problemtype'] = $_POST['problemtype'];
+	$_SESSION['problemstatus'] = $_POST['problemstatus'];
 }
 
 // MKKP Discord Kockabarlang - Addon
