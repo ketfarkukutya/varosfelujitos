@@ -19,8 +19,51 @@ if (isset($_POST['search']))
 		$searchstring .= "AND Type = '$searchfiltertype' ";
 	if (strlen($searchfilterstatus) <> 0)
 		$searchstring .= "AND Status = '$searchfilterstatus' ";
+	$_SESSION['search'] = $_POST['search'];
+	$_SESSION['problemtitle'] = $_POST['problemtitle'];
+	$_SESSION['problemtype'] = $_POST['problemtype'];
+	$_SESSION['problemstatus'] = $_POST['problemstatus'];
+} else if (isset($_SESSION['search'])) {
+	$searchfiltername = htmlspecialchars(mysqli_real_escape_string($conn,$_SESSION['problemtitle']));
+	$searchfiltertype = htmlspecialchars(mysqli_real_escape_string($conn,$_SESSION['problemtype']));
+	$searchfilterstatus = htmlspecialchars(mysqli_real_escape_string($conn,$_SESSION['problemstatus']));
+	if (strlen($searchfiltername) <> 0)
+		$searchstring .= "AND Title LIKE '%$searchfiltername%' ";
+	if (strlen($searchfiltertype) <> 0)
+		$searchstring .= "AND Type = '$searchfiltertype' ";
+	if (strlen($searchfilterstatus) <> 0)
+		$searchstring .= "AND Status = '$searchfilterstatus' ";
 }
 
+// MKKP Discord Kockabarlang - Addon
+// 4. hiba -> ,, - bejelentések nézetnél elég ha 50 látszik egyszerre. ''
+//
+// 		[+] csak 50 Issue jelenjen meg (mert nehézkes a képek betöltése)
+// 		[+] előző oldal gomb
+// 		[+] következő oldal gomb
+$MAXISSUE = 50;
+$pagenumber = 0;
+$pagenumber_curr = 0;
+$pagenumber_max = 0;
+$pagenumber_max_item = 0;
+
+$q_pagemax = "SELECT COUNT(Id) AS \"n\" FROM `Issue` WHERE $searchstring ORDER BY Created DESC;";
+$result_pagemax = mysqli_query($conn, $q_pagemax);
+while ( $r = mysqli_fetch_assoc($result_pagemax)) {
+	$pagenumber_max_item = $r["n"];
+	$pagenumber_max = ceil($r["n"]/$MAXISSUE);
+
+}
+if ( isset($_GET["n"]) && -1<intval($_GET["n"]) && intval($_GET["n"])<$pagenumber_max ) {
+	$pagenumber_curr = intval($_GET["n"]);
+	$pagenumber = ($pagenumber_curr * $MAXISSUE );
+} else if ( isset($_GET["n"]) && -1 < intval($_GET["n"]) && intval($_GET["n"]) >= $pagenumber_max ) {
+	$pagenumber_curr = ($pagenumber_max-1);
+	$pagenumber = ( ($pagenumber_max-1) * $MAXISSUE );
+}
+$pagenumber_next = $baselink . "?u=list&n=" . ($pagenumber_curr+1);
+$pagenumber_prew = $baselink . "?u=list&n=" . ($pagenumber_curr-1);
+// [/MKKP Addon]
 ?>
 
 <style>
@@ -68,11 +111,16 @@ if (isset($_POST['search']))
 	overflow-y: hidden;
 	line-height: 120%;
 }
+.navisor {
+	background-color: #2B443C;
+	width: conte;
+	height: min-content;
+}
 </style>
 <script>
 	function openissue (issue)
 		{
-			location.replace("<? print("$baselocation");?>?u=issue&i=" + issue);
+			window.open("<? print("$baselocation");?>?u=issue&i="+issue);
 		}
 </script>
 <div class="container" id="list" style="margin-top: 5px; display: none;">
@@ -118,8 +166,17 @@ if ($pagetype == 5)
 					</div>
 					<div class="col-md-3">
 						<input type="submit" id="search" name="search" class="btn btn-primary" value="Keresés" />
-					</div>
-				</div>	
+					</div>					
+				</div>
+				<div class="form-group">
+					<input type="button" class="btn btn-warning" value="Előző oldal" onclick="<? echo "window.location.replace('$pagenumber_prew')"; ?>" />
+					<?
+						print($pagenumber_curr+1);
+						print(" / ");
+						print($pagenumber_max);
+					?>
+					<input type="button" class="btn btn-warning" value="Következő oldal" onclick="<? echo "window.location.replace('$pagenumber_next')"; ?>" />
+				</div>
 			</form>
 		</div>
 		<?
@@ -138,7 +195,7 @@ if ($pagetype == 5)
 			<tbody>
 		<?
 			$content = mysqli_query($conn,"
-				SELECT Id, Title, Type, Address, Status FROM Issue WHERE $searchstring ORDER BY Created DESC");
+				SELECT Id, Title, Type, Address, Status FROM Issue WHERE $searchstring ORDER BY Created DESC LIMIT $MAXISSUE OFFSET $pagenumber;");
 			while($content <> null && $row = mysqli_fetch_assoc($content))
 			{
 				$issueid = $row["Id"];
@@ -174,9 +231,10 @@ if ($pagetype == 5)
 		<div class="row" style="padding-left: 30px; padding-right: 30px; vertical-align: top;">
 		<?
 			$content = mysqli_query($conn,"
-				SELECT Id, Title, Type, Address, Status, Created FROM Issue WHERE $searchstring ORDER BY Created DESC");
+				SELECT Id, Title, Type, Address, Status, Created FROM Issue WHERE $searchstring ORDER BY Created DESC LIMIT $MAXISSUE OFFSET $pagenumber;");
 			while($content <> null && $row = mysqli_fetch_assoc($content))
 			{
+				
 				$issueid = $row["Id"];
 				$issuetitle = $row["Title"];
 				$issuetype = $row["Type"];
@@ -225,12 +283,23 @@ if ($pagetype == 5)
 						</div>
 					</div>
 				<?
+			
 			}
 		?>
 		</div>
 		<?
+		
 		}
 		?>
+	</div>
+	<div class="row" style="margin-left: 10px;">
+		<input type="button" class="btn btn-warning" value="Előző oldal" onclick="<? echo "window.location.replace('$pagenumber_prew')"; ?>" />
+		<?
+			print($pagenumber_curr+1);
+			print(" / ");
+			print($pagenumber_max);
+		?>
+		<input type="button" class="btn btn-warning" value="Következő oldal" onclick="<? echo "window.location.replace('$pagenumber_next')"; ?>" />
 	</div>
 <?
 }
