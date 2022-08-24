@@ -23,6 +23,16 @@ if (isset($_POST['search']))
 	$_SESSION['problemtitle'] = $_POST['problemtitle'];
 	$_SESSION['problemtype'] = $_POST['problemtype'];
 	$_SESSION['problemstatus'] = $_POST['problemstatus'];
+} else if (isset($_SESSION['search'])) {
+	$searchfiltername = htmlspecialchars(mysqli_real_escape_string($conn,$_SESSION['problemtitle']));
+	$searchfiltertype = htmlspecialchars(mysqli_real_escape_string($conn,$_SESSION['problemtype']));
+	$searchfilterstatus = htmlspecialchars(mysqli_real_escape_string($conn,$_SESSION['problemstatus']));
+	if (strlen($searchfiltername) <> 0)
+		$searchstring .= "AND Title LIKE '%$searchfiltername%' ";
+	if (strlen($searchfiltertype) <> 0)
+		$searchstring .= "AND Type = '$searchfiltertype' ";
+	if (strlen($searchfilterstatus) <> 0)
+		$searchstring .= "AND Status = '$searchfilterstatus' ";
 }
 
 // MKKP Discord Kockabarlang - Addon
